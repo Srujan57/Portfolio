@@ -4,9 +4,68 @@
   <meta charset="UTF-8">
   <title>Projects</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ===== Project Page Styling ===== */
+
+    .projects-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .project-card {
+      background: white;
+      padding: 20px 25px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+    }
+
+    .project-title {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .project-desc {
+      font-size: 1.1rem;
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    .project-notes {
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 12px;
+      color: #444;
+    }
+
+    .project-link a {
+      font-size: 1.05rem;
+      text-decoration: none;
+      background: #000;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .project-link a:hover {
+      background: #261fff;
+    }
+  </style>
+
 </head>
 <body>
+
 <h1 style="text-align:center; font-size: xxx-large;">Srujan Shedimane</h1>
+
 <ul>
   <li><a href="/index.html">Home</a></li>
   <li><a href="/projects.html">Projects</a></li>
@@ -18,48 +77,53 @@
     <img src="img/github_logo.png" alt="GitHub" width="25" height="25">
   </a></li>
 </ul>
+
 <h2 style="text-align:center; font-size: xx-large;">Projects</h2>
 
-<dl>
-  <dt>Byte the Bait: How Technology Stops Phishing</dt>
-  <dd>- Worked on a multidisciplinary team of 4 students to develop a set of
-    deliverables catered to different audiences to
-    research probable solutions to phishing attacks, focusing on a
-    legislative deliverable.</dd>
-  <dd>- Special Notes: Public Deliverable, Legislative Deliverable, Industry Deliverable</dd>
+<div class="projects-container">
 
-  <dt>Tile Wars</dt>
-  <dd>- Tile-Wars is a Java-based game where players place pieces in any direction,
-    including special pieces with unique abilities. The winner is selected based on the
-    most pieces.</dd>
-  <dd>- Special Notes: Java, Board Game, Unique mechanics</dd>
-  <dd>- https://github.com/Srujan57/Tile-Wars</dd>
+  <div class="project-card">
+    <div class="project-title">Byte the Bait: How Technology Stops Phishing</div>
+    <div class="project-desc">Developed multiple deliverables with a multidisciplinary team to explore technical and legislative solutions for phishing attacks.</div>
+    <div class="project-notes">Special Notes: Public Deliverable, Legislative Deliverable, Industry Deliverable</div>
+  </div>
 
-  <dt>Subway Cars</dt>
-  <dd>- Subway-Cars is a JavaScript-based project where users can collect coins,
-    dodge obstacles, use the up and down arrow keys to control the car, and collect
-    power-ups to try to achieve the highest score possible.</dd>
-  <dd>- Special Notes: JavaScript, GitHub public project</dd>
-  <dd>- https://github.com/Srujan57/Subway-Cars</dd>
+  <div class="project-card">
+    <div class="project-title">Tile Wars</div>
+    <div class="project-desc">A Java game where players place directional and special ability tiles to compete for board dominance.</div>
+    <div class="project-notes">Special Notes: Java, Board Game, Unique mechanics</div>
+    <div class="project-link"><a href="https://github.com/Srujan57/Tile-Wars" target="_blank">View on GitHub</a></div>
+  </div>
 
-  <dt>X marks the spot</dt>
-  <dd>- X-marks-the-spot is a Java word-search project.</dd>
-  <dd>- Special Notes: Java, GitHub public project</dd>
-  <dd>- https://github.com/Srujan57/X-marks-the-spot</dd>
+  <div class="project-card">
+    <div class="project-title">Subway Cars</div>
+    <div class="project-desc">JavaScript-based game where users collect coins, dodge obstacles, and collect power-ups to reach the highest score.</div>
+    <div class="project-notes">Special Notes: JavaScript, GitHub public project</div>
+    <div class="project-link"><a href="https://github.com/Srujan57/Subway-Cars" target="_blank">View on GitHub</a></div>
+  </div>
 
-  <dt>Get Out</dt>
-  <dd>- Get-Out is a Python-based escape room project where users have to find
-    clues to escape the room.</dd>
-  <dd>- Special Notes: Python, GitHub public project</dd>
-  <dd>- https://github.com/Srujan57/Get-Out</dd>
+  <div class="project-card">
+    <div class="project-title">X Marks the Spot</div>
+    <div class="project-desc">A word-search puzzle game implemented in Java.</div>
+    <div class="project-notes">Special Notes: Java, GitHub public project</div>
+    <div class="project-link"><a href="https://github.com/Srujan57/X-marks-the-spot" target="_blank">View on GitHub</a></div>
+  </div>
 
-  <dt>Sports Simulation</dt>
-  <dd>- Sports-Simulation is a Python simulation project, where users can improve
-    stats of players, and random events can decrease stats to try to win games.</dd>
-  <dd>- Special Notes: Python, GitHub public project</dd>
-  <dd>- https://github.com/Srujan57/Sports-Simulation</dd>
-</dl>
+  <div class="project-card">
+    <div class="project-title">Get Out</div>
+    <div class="project-desc">A Python-based escape room game where users discover clues to escape.</div>
+    <div class="project-notes">Special Notes: Python, GitHub public project</div>
+    <div class="project-link"><a href="https://github.com/Srujan57/Get-Out" target="_blank">View on GitHub</a></div>
+  </div>
 
+  <div class="project-card">
+    <div class="project-title">Sports Simulation</div>
+    <div class="project-desc">A Python sports simulation where player stats evolve through training and random events.</div>
+    <div class="project-notes">Special Notes: Python, GitHub public project</div>
+    <div class="project-link"><a href="https://github.com/Srujan57/Sports-Simulation" target="_blank">View on GitHub</a></div>
+  </div>
+
+</div>
 
 </body>
 </html>

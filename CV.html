@@ -4,9 +4,45 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/style.css">
   <title>CV</title>
+
+  <style>
+    /* Page-specific improvements */
+
+    .cv-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .cv-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-top: 30px;
+      margin-bottom: 25px;
+    }
+
+    .cv-frame {
+      width: 100%;
+      height: 650px;
+      border: 2px solid #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .cv-frame {
+        height: 500px;
+      }
+    }
+  </style>
+
 </head>
+
 <body>
+
 <h1 style="text-align:center; font-size: xxx-large;">Srujan Shedimane</h1>
+
 <ul>
   <li><a href="/index.html">Home</a></li>
   <li><a href="/projects.html">Projects</a></li>
@@ -18,14 +54,15 @@
     <img src="img/github_logo.png" alt="GitHub" width="25" height="25">
   </a></li>
 </ul>
-<h2 style="text-align:center; font-size: xx-large;">Curriculum Vitae</h2>
 
-<iframe
-  src="img/Master%20CV.pdf"
-  width="100%"
-  height="600px"
-  style="border: none;"
-></iframe>
+<div class="cv-container">
+  <h2 class="cv-title">Curriculum Vitae</h2>
+
+  <iframe
+    src="img/Master%20CV.pdf"
+    class="cv-frame"
+  ></iframe>
+</div>
 
 </body>
 </html>
