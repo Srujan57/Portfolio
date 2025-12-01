@@ -125,22 +125,37 @@
 
 </div>
 
-<footer>
-  <form action="https://api.web3forms.com/submit" method="POST">
+<footer class="footer-contact">
+  <div class="footer-container">
 
-    <input type="hidden" name="access_key" value="1c305646-6221-49a1-84c3-d454762afa8d">
+    <div class="footer-left">
+      <h3>Get in Touch</h3>
+      <p>Feel free to reach out if you'd like to work together or have any questions.</p>
+    </div>
 
-    <h3>Contact Me</h3>
+    <div class="footer-right">
+      <form action="https://api.web3forms.com/submit" method="POST" class="footer-form">
 
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
+        <input type="hidden" name="access_key" value="1c305646-6221-49a1-84c3-d454762afa8d">
 
-    <div class="h-captcha" data-sitekey="ceb6d3c6-b2c4-48d2-a524-c55c9b50fdac"></div>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
 
-    <button type="submit">Send</button>
-  </form>
+        <div class="h-captcha" data-sitekey="ceb6d3c6-b2c4-48d2-a524-c55c9b50fdac"></div>
+
+        <button type="submit" class="footer-btn">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2024 Srujan Shedimane • All Rights Reserved</p>
+  </div>
 </footer>
+
+<script src="https://hcaptcha.com/1/api.js" async defer></script>
 
 </body>
 </html>
