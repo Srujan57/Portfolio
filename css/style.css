@@ -1,15 +1,9 @@
 /*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
 
 /* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
 
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
+
+
 dt {
   font-weight: bold;
   margin-top: 15px;
@@ -22,37 +16,44 @@ dd {
   padding-top: 5px;
 }
 
+/* ==========================
+   Footer
+   ========================== */
+
 footer {
   background: #000000;
   padding: 20px;
   text-align: center;
   font-family: Arial, sans-serif;
 }
-footer a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-}
 
+footer a,
 footer p {
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
 }
+
 footer a:hover {
   text-decoration: underline;
 }
 
-
-
-
-
-
+/* ========================================================================== */
 
 html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
+}
+
+body {
+  background-color: rgb(165, 165, 165);
+  font-family: Arial, sans-serif;
+}
+
+
+.navbar {
+  z-index: 1000;
 }
 
 ul {
@@ -61,19 +62,19 @@ ul {
   padding: 0;
   background-color: #000000;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-
 ul li {
-  float: left;
+  float: none;
 }
 
 ul li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 30px;
+  padding: 10px 16px;
   text-decoration: none;
 }
 
@@ -85,64 +86,51 @@ ul li a:hover {
 
 .container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-  padding: 40px;
+  gap: 24px;
+  padding: 20px;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-
 .image img {
-  width: 300px;
+  width: 100%;
+  max-width: 280px;
   height: auto;
   border-radius: 15px;
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-
 .text {
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 1.6;
   max-width: 650px;
+  text-align: center;
 }
 
-@media (max-width: 768px) {
+
+
+@media (min-width: 768px) {
   .container {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    padding: 40px;
   }
 
   .text {
-    padding-right: 0;
+    font-size: 1.1rem;
+    text-align: left;
   }
 
-  .image img {
-    width: 70%;
+  .navbar {
+    position: sticky;
+    top: 0;
   }
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 10px 0;
-}
 
-
-
-
-
-
-
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -154,15 +142,6 @@ ul li a:hover {
   text-shadow: none;
 }
 
-
-body {
-  background-color: rgb(165, 165, 165);
-}
-
-/*
- * A better looking default horizontal rule
- */
-
 hr {
   display: block;
   height: 1px;
@@ -171,12 +150,6 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
 
 audio,
 canvas,
@@ -187,49 +160,22 @@ video {
   vertical-align: middle;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
 fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
-
 textarea {
   resize: vertical;
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
 
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
 
 .hidden,
 [hidden] {
   display: none !important;
 }
-
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
 
 .visually-hidden {
   border: 0;
@@ -241,14 +187,7 @@ textarea {
   position: absolute;
   white-space: nowrap;
   width: 1px;
-  /* 1 */
 }
-
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
 
 .visually-hidden.focusable:active,
 .visually-hidden.focusable:focus {
@@ -261,20 +200,11 @@ textarea {
   width: auto;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
 .invisible {
   visibility: hidden;
 }
 
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
+
 
 .clearfix::before,
 .clearfix::after {
@@ -286,28 +216,7 @@ textarea {
   clear: both;
 }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
 
 @media print {
   *,
@@ -315,7 +224,6 @@ textarea {
   *::after {
     background: #fff !important;
     color: #000 !important;
-    /* Black prints faster */
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -333,10 +241,6 @@ textarea {
     content: " (" attr(title) ")";
   }
 
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
   a[href^="#"]::after,
   a[href^="javascript:"]::after {
     content: "";
@@ -369,4 +273,3 @@ textarea {
     page-break-after: avoid;
   }
 }
-
