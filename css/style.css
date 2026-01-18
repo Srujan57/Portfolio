@@ -82,45 +82,6 @@ ul li a:hover {
   background-color: #261fff;
 }
 
-.cv-download {
-  display: none;
-  text-align: center;
-  margin-top: 12px;
-}
-
-.cv-download a {
-  background: #000;
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .cv-download {
-    display: block;
-  }
-}
-
-.cv-frame {
-  width: 100%;
-  height: 80vh;
-  border: 2px solid #000;
-  border-radius: 12px;
-}
-
-/* Mobile fix */
-@media (max-width: 768px) {
-  .cv-frame {
-    height: 85vh;
-    border-radius: 8px;
-  }
-}
-
-
-
-
 
 .container {
   display: flex;
