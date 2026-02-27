@@ -76,14 +76,24 @@ body {
 
 .navbar li a:hover { color: var(--accent); }
 
+/* Ensure the button inherits the correct text color to be visible */
 #theme-toggle {
-  background: none;
+  background: transparent;
   border: 1px solid var(--border);
-  color: var(--text);
+  color: var(--text); /* This forces the emoji to be visible */
   cursor: pointer;
-  padding: 5px 10px;
-  border-radius: 50%;
+  padding: 6px 12px;
+  border-radius: 50px;
   font-size: 1.1rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-toggle:hover {
+  border-color: var(--accent);
+  background-color: rgba(124, 58, 237, 0.1); /* Subtle purple tint on hover */
 }
 
 /* Container & Profile Pic */
