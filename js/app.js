@@ -1,43 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementById('main-nav');
   const themeBtn = document.getElementById('theme-toggle');
-  // Typewriter Effect for your title
-  const title = document.querySelector('.main-title');
-  const text = "Srujan Shedimane";
-  let index = 0;
+  const body = document.body;
 
-  function typeWriter() {
-    if (index < text.length) {
-      title.innerHTML += text.charAt(index);
-      index++;
-      setTimeout(typeWriter, 100); // Speed in milliseconds
-    }
-  }
-
-// Clear the title first then start typing
-  title.innerHTML = "";
-  typeWriter();
-
-  // Scroll Effect: Add background when moving away from top
+  // 1. Scroll Effect for Navbar
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
+    if (window.scrollY > 25) {
       nav.classList.add('scrolled');
     } else {
       nav.classList.remove('scrolled');
     }
   });
 
-  // Dark Mode: Minimalist toggle
-  themeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
+  // 2. Dark Mode Toggle Logic
+  const toggleTheme = () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
     themeBtn.textContent = isDark ? '☀️' : '🌙';
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  });
+    localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+  };
 
-  // Load saved theme
-  if(localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
+  themeBtn.addEventListener('click', toggleTheme);
+
+  // 3. Apply saved theme on load
+  if (localStorage.getItem('portfolio-theme') === 'dark') {
+    body.classList.add('dark-mode');
     themeBtn.textContent = '☀️';
   }
 });
