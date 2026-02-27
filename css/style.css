@@ -1,18 +1,7 @@
 /* =========================================
-   1. CORE THEME & VARIABLES (DEFAULT DARK)
+   1. CORE THEME & VARIABLES
    ========================================= */
 :root {
-  --bg: #0a0a0a;
-  --text: #ffffff;
-  --text-muted: #a1a1aa;
-  --accent: #a78bfa;
-  --nav-blend: rgba(10, 10, 10, 0.85);
-  --card-bg: #171717;
-  --border: #262626;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.light-mode {
   --bg: #ffffff;
   --text: #000000;
   --text-muted: #666666;
@@ -20,6 +9,17 @@ body.light-mode {
   --nav-blend: rgba(255, 255, 255, 0.85);
   --card-bg: #ffffff;
   --border: #e5e7eb;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode {
+  --bg: #0a0a0a;
+  --text: #ffffff;
+  --text-muted: #a1a1aa;
+  --accent: #a78bfa;
+  --nav-blend: rgba(10, 10, 10, 0.85);
+  --card-bg: #171717;
+  --border: #262626;
 }
 
 /* =========================================
@@ -32,7 +32,6 @@ body {
   color: var(--text);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   margin: 0;
-  /* Transition handles the smooth switch AFTER the page loads */
   transition: background-color 0.4s ease, color 0.4s ease;
   line-height: 1.6;
 }
@@ -49,7 +48,7 @@ h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; text-align: c
 h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-muted); text-align: center; }
 
 /* =========================================
-   3. ELEGANT FLOATING NAVBAR
+   3. ELEGANT FLOATING NAVBAR (TEXT FOCUS)
    ========================================= */
 #main-nav {
   position: fixed;
@@ -57,17 +56,18 @@ h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-muted); text-align: 
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
-  max-width: 800px;
+  max-width: 800px; /* Kept slim horizontally */
   z-index: 2000;
   border-radius: 100px;
   transition: var(--transition);
+  background-color: transparent;
 }
 
 #main-nav.scrolled {
   background-color: var(--nav-blend);
   backdrop-filter: blur(12px);
   border: 1px solid var(--border);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   top: 15px;
 }
 
@@ -75,7 +75,7 @@ h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-muted); text-align: 
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6px 20px;
+  padding: 6px 20px; /* Reduced vertical padding to keep pill slim */
   list-style: none;
   margin: 0;
   gap: 8px;
@@ -87,7 +87,7 @@ h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-muted); text-align: 
   text-decoration: none;
   font-weight: 600;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* LARGER TEXT */
   letter-spacing: -0.02em;
   transition: var(--transition);
 }
@@ -108,16 +108,16 @@ h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-muted); text-align: 
   justify-content: center;
 }
 
-/* GitHub Icon Logic */
-.github-icon { width: 26px; height: 26px; display: block; }
-.github-light { display: none; }
-.github-dark { display: block; }
+#theme-toggle:hover { border-color: var(--accent); background: rgba(124, 58, 237, 0.05); }
 
-body.light-mode .github-light { display: block; }
-body.light-mode .github-dark { display: none; }
+/* Icons */
+.github-icon { width: 26px; height: 26px; display: block; }
+.github-dark { display: none; }
+body.dark-mode .github-light { display: none; }
+body.dark-mode .github-dark { display: block; }
 
 /* =========================================
-   4. LAYOUTS
+   4. HOME PAGE LAYOUT
    ========================================= */
 .container {
   display: flex;
@@ -132,6 +132,7 @@ body.light-mode .github-dark { display: none; }
   max-width: 320px;
   border-radius: 24px;
   border: 1px solid var(--border);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
 }
 
 .text p {
@@ -140,8 +141,12 @@ body.light-mode .github-dark { display: none; }
   border-radius: 24px;
   border: 1px solid var(--border);
   font-size: 1.1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
+/* =========================================
+   5. PROJECT CARDS (TWO-COLUMN GRID)
+   ========================================= */
 .projects-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -164,15 +169,24 @@ body.light-mode .github-dark { display: none; }
   transition: var(--transition);
 }
 
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.project-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+.project-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; }
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
 .tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   padding: 4px 10px;
-  background: rgba(167, 139, 250, 0.1);
+  background: rgba(124, 58, 237, 0.1);
   color: var(--accent);
   border-radius: 6px;
   font-weight: 600;
-  margin-right: 5px;
 }
 
 .project-link a {
@@ -187,7 +201,7 @@ body.light-mode .github-dark { display: none; }
 }
 
 /* =========================================
-   5. FOOTER
+   6. MODERN FOOTER
    ========================================= */
 footer {
   text-align: center;
@@ -195,6 +209,8 @@ footer {
   border-top: 1px solid var(--border);
   margin-top: 100px;
 }
+
+.footer-content h3 { font-size: 1.5rem; margin-bottom: 15px; }
 
 .footer-contact-info {
   margin-top: 25px;
@@ -206,7 +222,10 @@ footer {
   color: var(--text-muted);
 }
 
+.footer-contact-info span { display: flex; align-items: center; gap: 8px; }
+
 footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
 @media (min-width: 768px) {
   .container { flex-direction: row; align-items: flex-start; }
 }
