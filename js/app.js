@@ -1,12 +1,11 @@
-/**
- * Srujan Shedimane Portfolio Logic - Default Dark Mode
- */
+
 
 const initPortfolio = () => {
   const themeBtn = document.getElementById('theme-toggle');
   const body = document.body;
   const nav = document.getElementById('main-nav');
 
+  // Wait for DOM if necessary
   if (!themeBtn) {
     setTimeout(initPortfolio, 100);
     return;
@@ -15,13 +14,12 @@ const initPortfolio = () => {
   // 1. Theme Logic
   const savedTheme = localStorage.getItem('portfolio-theme');
 
-  // Check if user previously preferred Light Mode
+  // Default is dark (no class). Only add light-mode if specifically saved.
   if (savedTheme === 'light') {
     body.classList.add('light-mode');
     themeBtn.textContent = '🌙';
   } else {
-    // Default State (Dark)
-    themeBtn.textContent = '☀️';
+    themeBtn.textContent = '☀️'; // Sun icon for Dark Mode
   }
 
   themeBtn.onclick = () => {
@@ -32,7 +30,7 @@ const initPortfolio = () => {
     localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
   };
 
-  // 2. Navbar Scroll Effect
+  // 2. Navbar Scroll Logic
   window.onscroll = () => {
     if (window.scrollY > 30) {
       nav.classList.add('scrolled');
@@ -42,9 +40,5 @@ const initPortfolio = () => {
   };
 };
 
-// Initialization
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initPortfolio);
-} else {
-  initPortfolio();
-}
+// Initial run
+initPortfolio();
