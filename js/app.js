@@ -1,52 +1,49 @@
-/**
- * Srujan Shedimane Portfolio Logic
- * Handles: Theme Toggle, Sticky Nav, and Persistence
- */
 
-const initializeTheme = () => {
+
+const initPortfolio = () => {
   const themeBtn = document.getElementById('theme-toggle');
   const body = document.body;
   const nav = document.getElementById('main-nav');
 
+  // If button doesn't exist yet, wait and try again
   if (!themeBtn) {
-    console.error("Theme toggle button not found! Check if id='theme-toggle' exists in your HTML.");
+    setTimeout(initPortfolio, 100);
     return;
   }
 
-  // 1. Theme Toggle Logic
-  const currentTheme = localStorage.getItem('portfolio-theme');
+  // 1. Persistent Theme Logic
+  const savedTheme = localStorage.getItem('portfolio-theme');
 
-  // Apply saved theme on load
-  if (currentTheme === 'dark') {
+  if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
     themeBtn.textContent = '☀️';
   }
 
-  themeBtn.addEventListener('click', () => {
+  // Theme Toggle Handler
+  themeBtn.onclick = () => {
     body.classList.toggle('dark-mode');
     const isDark = body.classList.contains('dark-mode');
 
-    // Update Button Icon
+    // Update button text/icon
     themeBtn.textContent = isDark ? '☀️' : '🌙';
 
-    // Save preference
+    // Save to browser memory
     localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
-    console.log("Theme changed to:", isDark ? "dark" : "light");
-  });
+  };
 
-  // 2. Navbar Scroll Logic
-  window.addEventListener('scroll', () => {
+  // 2. Navbar Scroll Effect
+  window.onscroll = () => {
     if (window.scrollY > 30) {
       nav.classList.add('scrolled');
     } else {
       nav.classList.remove('scrolled');
     }
-  });
+  };
 };
 
-// Ensures the DOM is ready before running the script
+// Start the initialization
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeTheme);
+  document.addEventListener('DOMContentLoaded', initPortfolio);
 } else {
-  initializeTheme();
+  initPortfolio();
 }
