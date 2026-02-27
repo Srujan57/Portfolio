@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<script>
+  // Immediate execution to prevent flicker
+  if (localStorage.getItem('portfolio-theme') === 'light') {
+    document.body.classList.add('light-mode');
+  }
+</script>
 
 <nav id="main-nav">
   <ul class="navbar">

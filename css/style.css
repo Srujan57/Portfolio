@@ -2,7 +2,6 @@
    1. CORE THEME & VARIABLES (DEFAULT DARK)
    ========================================= */
 :root {
-  /* Dark Mode is the Baseline */
   --bg: #0a0a0a;
   --text: #ffffff;
   --text-muted: #a1a1aa;
@@ -13,7 +12,6 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Light Mode is the Exception */
 body.light-mode {
   --bg: #ffffff;
   --text: #000000;
@@ -34,6 +32,7 @@ body {
   color: var(--text);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   margin: 0;
+  /* Transition handles the smooth switch AFTER the page loads */
   transition: background-color 0.4s ease, color 0.4s ease;
   line-height: 1.6;
 }
@@ -88,7 +87,7 @@ h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-muted); text-align: 
   text-decoration: none;
   font-weight: 600;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.1rem; /* Larger Text */
+  font-size: 1.1rem;
   letter-spacing: -0.02em;
   transition: var(--transition);
 }
@@ -109,17 +108,16 @@ h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-muted); text-align: 
   justify-content: center;
 }
 
-/* GitHub Icon Logic (Swapped for Default Dark) */
+/* GitHub Icon Logic */
 .github-icon { width: 26px; height: 26px; display: block; }
+.github-light { display: none; }
+.github-dark { display: block; }
 
-.github-light { display: none; } /* Hidden on dark background */
-.github-dark { display: block; }  /* Visible (white logo) on dark background */
-
-body.light-mode .github-light { display: block; } /* Visible (black logo) on light background */
+body.light-mode .github-light { display: block; }
 body.light-mode .github-dark { display: none; }
 
 /* =========================================
-   4. LAYOUTS (HOME & PROJECTS)
+   4. LAYOUTS
    ========================================= */
 .container {
   display: flex;
@@ -166,8 +164,6 @@ body.light-mode .github-dark { display: none; }
   transition: var(--transition);
 }
 
-.project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-
 .tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
@@ -191,7 +187,7 @@ body.light-mode .github-dark { display: none; }
 }
 
 /* =========================================
-   5. MODERN FOOTER
+   5. FOOTER
    ========================================= */
 footer {
   text-align: center;
