@@ -1,222 +1,100 @@
-
 :root {
-  /* Modern Slate & Navy Palette */
-  --bg-color: #f8fafc;        /* Soft off-white */
-  --text-main: #1e293b;       /* Deep slate gray (easier on eyes than black) */
-  --text-muted: #475569;      /* Lighter gray for sub-text */
-  --nav-bg: #0f172a;          /* Rich midnight navy */
-  --accent-blue: #2563eb;     /* Professional Cobalt blue */
-  --accent-hover: #1d4ed8;
+  /* Core Palette */
+  --bg: #ffffff;
+  --text: #000000;
+  --text-muted: #666666;
+  --accent: #7c3aed; /* Electric Violet - feels very "Dev" */
+  --nav-blend: rgba(255, 255, 255, 0.8);
   --card-bg: #ffffff;
-
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-  --radius: 12px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border: #e5e7eb;
 }
 
-
-html {
-  scroll-behavior: smooth;
+body.dark-mode {
+  --bg: #000000;
+  --text: #ffffff;
+  --text-muted: #a1a1aa;
+  --accent: #a78bfa;
+  --nav-blend: rgba(0, 0, 0, 0.8);
+  --card-bg: #09090b;
+  --border: #27272a;
 }
 
+/* Global Setup */
 body {
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
-  line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/**
-  floating navbar
- */
+/* 3. The Floating Pill Navbar */
 #main-nav {
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 900px;
   z-index: 2000;
-  transition: var(--transition);
+  border-radius: 100px; /* Pill shape */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: transparent;
-  padding: 15px 0;
+  border: 1px solid transparent;
 }
 
+/* The "Blending" Logic on Scroll */
 #main-nav.scrolled {
-  background-color: rgba(15, 23, 42, 0.9); /* Navy with transparency */
-  backdrop-filter: blur(12px);
-  padding: 10px 0;
-  box-shadow: var(--shadow-md);
+  background-color: var(--nav-blend);
+  backdrop-filter: blur(12px); /* Glassmorphism */
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  top: 10px;
 }
 
 .navbar {
-  list-style-type: none;
-  margin: 0 auto;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1100px;
+  padding: 10px 20px;
+  list-style: none;
+  background: transparent !important;
 }
 
 .navbar li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 10px 20px;
+  color: var(--text);
+  padding: 8px 16px;
   text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition);
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace; /* Technical feel */
+  font-size: 0.9rem;
 }
 
 .navbar li a:hover {
-  color: var(--accent-blue);
+  color: var(--accent);
 }
 
-
-.main-title {
-  text-align: center;
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-top: 140px; /* Space for fixed nav */
-  color: var(--nav-bg);
-  letter-spacing: -0.025em;
-}
-
-h2 {
-  color: var(--nav-bg);
-  margin-top: 2rem;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.image img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
-}
-
-.image img:hover {
-  transform: scale(1.02);
-}
-
-/**
-About me text box updated.
- */
+/* About Me Box - Minimalist & Deep */
 .text p {
   background: var(--card-bg);
-  padding: 35px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  border-left: 6px solid var(--accent-blue);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   font-size: 1.1rem;
-  color: var(--text-muted);
+  line-height: 1.7;
 }
 
-/**
-Project cards
- */
-.projects-container {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
+/* Project Cards - Clean Grid Feel */
 .project-card {
   background: var(--card-bg);
-  padding: 30px;
-  border-radius: var(--radius);
-  margin-bottom: 25px;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.2s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--accent-blue);
-}
-
-.project-title {
-  font-size: 1.5rem;
-  color: var(--nav-bg);
-  margin-bottom: 10px;
-}
-
-.project-link a {
-  display: inline-block;
-  background: var(--nav-bg);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-.project-link a:hover {
-  background: var(--accent-blue);
-}
-
-/**
-footer
- */
-footer {
-  background: var(--nav-bg);
-  padding: 60px 20px;
-  text-align: center;
-  margin-top: 80px;
-}
-
-footer p, footer a {
-  color: #94a3b8; /* Muted slate for footer */
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: white;
-}
-
-/* Responsive Logic */
-@media (min-width: 768px) {
-  .container { flex-direction: row; }
-  .text { text-align: left; }
-}
-
-/* Dark Mode Variables */
-body.dark-mode {
-  --bg-color: #0f172a;        /* Dark navy background */
-  --text-main: #f1f5f9;       /* Light slate text */
-  --text-muted: #94a3b8;      /* Muted gray text */
-  --nav-bg: #020617;          /* Almost black navy */
-  --card-bg: #1e293b;         /* Lighter navy for cards */
-  --accent-blue: #38bdf8;     /* Brighter cyan-blue for dark mode visibility */
-}
-
-/* Style the toggle button itself */
-#theme-toggle {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  cursor: pointer;
-  padding: 5px 10px;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  transition: var(--transition);
-  margin-left: 15px;
-}
-
-#theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  border-color: var(--accent);
 }
