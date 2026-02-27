@@ -1,34 +1,35 @@
-
+/**
+ * Srujan Shedimane Portfolio Logic - Default Dark Mode
+ */
 
 const initPortfolio = () => {
   const themeBtn = document.getElementById('theme-toggle');
   const body = document.body;
   const nav = document.getElementById('main-nav');
 
-  // If button doesn't exist yet, wait and try again
   if (!themeBtn) {
     setTimeout(initPortfolio, 100);
     return;
   }
 
-  // 1. Persistent Theme Logic
+  // 1. Theme Logic
   const savedTheme = localStorage.getItem('portfolio-theme');
 
-  if (savedTheme === 'dark') {
-    body.classList.add('dark-mode');
+  // Check if user previously preferred Light Mode
+  if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    themeBtn.textContent = '🌙';
+  } else {
+    // Default State (Dark)
     themeBtn.textContent = '☀️';
   }
 
-  // Theme Toggle Handler
   themeBtn.onclick = () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
+    body.classList.toggle('light-mode');
+    const isLight = body.classList.contains('light-mode');
 
-    // Update button text/icon
-    themeBtn.textContent = isDark ? '☀️' : '🌙';
-
-    // Save to browser memory
-    localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+    themeBtn.textContent = isLight ? '🌙' : '☀️';
+    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
   };
 
   // 2. Navbar Scroll Effect
@@ -41,7 +42,7 @@ const initPortfolio = () => {
   };
 };
 
-// Start the initialization
+// Initialization
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initPortfolio);
 } else {
