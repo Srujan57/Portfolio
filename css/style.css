@@ -3,10 +3,11 @@
   --bg: #ffffff;
   --text: #000000;
   --text-muted: #666666;
-  --accent: #7c3aed; /* Electric Violet - feels very "Dev" */
+  --accent: #7c3aed;
   --nav-blend: rgba(255, 255, 255, 0.8);
   --card-bg: #ffffff;
   --border: #e5e7eb;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.dark-mode {
@@ -23,32 +24,32 @@ body.dark-mode {
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
   margin: 0;
+  overflow-x: hidden; /* Prevents unwanted side-scrolling */
 }
 
-/* 3. The Floating Pill Navbar */
+/* 1. The Floating Pill Navbar */
 #main-nav {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 900px;
+  max-width: 800px; /* Narrower for a tighter "pill" feel */
   z-index: 2000;
-  border-radius: 100px; /* Pill shape */
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 100px;
+  transition: var(--transition);
   background-color: transparent;
   border: 1px solid transparent;
 }
 
-/* The "Blending" Logic on Scroll */
 #main-nav.scrolled {
   background-color: var(--nav-blend);
-  backdrop-filter: blur(12px); /* Glassmorphism */
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   top: 10px;
 }
 
@@ -56,8 +57,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px;
+  padding: 8px 20px;
   list-style: none;
+  margin: 0;
   background: transparent !important;
 }
 
@@ -66,35 +68,103 @@ body {
   padding: 8px 16px;
   text-decoration: none;
   font-weight: 600;
-  font-family: 'JetBrains Mono', monospace; /* Technical feel */
-  font-size: 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
 }
 
 .navbar li a:hover {
   color: var(--accent);
 }
 
-/* About Me Box - Minimalist & Deep */
-.text p {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  font-size: 1.1rem;
-  line-height: 1.7;
+/* 2. Layout & Typography */
+.main-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
 }
 
-/* Project Cards - Clean Grid Feel */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 3. The Balanced Profile Picture */
+.image img {
+  width: 100%;
+  max-width: 320px; /* The "Just Right" size */
+  height: auto;
+  border-radius: 24px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.image img:hover {
+  transform: scale(1.02);
+  border-color: var(--accent);
+}
+
+/* 4. About Me Box */
+.text p {
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* 5. Project Cards (For projects.html) */
+.projects-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
 .project-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
-  transition: transform 0.2s ease;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 24px;
+  transition: var(--transition);
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 6. Footer */
+footer {
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 100px;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Responsive Logic */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    text-align: left;
+    padding-top: 120px;
+  }
 }
