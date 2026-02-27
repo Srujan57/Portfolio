@@ -1,8 +1,12 @@
+/* =========================================
+   1. CSS VARIABLES (THEME CONTROL)
+   ========================================= */
 :root {
+  /* Light Mode Palette */
   --bg: #ffffff;
   --text: #000000;
   --text-muted: #666666;
-  --accent: #7c3aed;
+  --accent: #7c3aed; /* Electric Violet */
   --nav-blend: rgba(255, 255, 255, 0.85);
   --card-bg: #ffffff;
   --border: #e5e7eb;
@@ -10,6 +14,7 @@
 }
 
 body.dark-mode {
+  /* Dark Mode Palette */
   --bg: #0a0a0a;
   --text: #ffffff;
   --text-muted: #a1a1aa;
@@ -19,34 +24,55 @@ body.dark-mode {
   --border: #262626;
 }
 
+/* =========================================
+   2. GLOBAL STYLES
+   ========================================= */
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   margin: 0;
-  transition: background-color 0.4s ease;
+  padding: 0;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  line-height: 1.6;
 }
 
-/* Fixes the "messy" overlapping */
+/* Container for page content to prevent overlap with Nav */
 .content-wrapper {
-  padding-top: 120px; /* Gives space so fixed nav doesn't cover title */
-  min-height: 80vh;
+  padding-top: 120px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-/* Floating Pill Navbar */
+h1, h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+/* =========================================
+   3. FLOATING PILL NAVBAR
+   ========================================= */
 #main-nav {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 700px;
+  max-width: 800px;
   z-index: 2000;
   border-radius: 100px;
   transition: var(--transition);
   background-color: transparent;
+  border: 1px solid transparent;
 }
 
+/* State when user scrolls down */
 #main-nav.scrolled {
   background-color: var(--nav-blend);
   backdrop-filter: blur(12px);
@@ -62,71 +88,97 @@ body {
   padding: 10px 20px;
   list-style: none;
   margin: 0;
-  gap: 10px;
+  gap: 15px;
 }
 
 .navbar li a {
   color: var(--text);
-  padding: 8px 15px;
+  padding: 8px 12px;
   text-decoration: none;
   font-weight: 600;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
+  transition: color 0.2s ease;
 }
 
-.navbar li a:hover { color: var(--accent); }
+.navbar li a:hover {
+  color: var(--accent);
+}
 
-/* Ensure the button inherits the correct text color to be visible */
+/* =========================================
+   4. THEME TOGGLE & ICONS
+   ========================================= */
 #theme-toggle {
   background: transparent;
   border: 1px solid var(--border);
-  color: var(--text); /* This forces the emoji to be visible */
+  color: var(--text);
   cursor: pointer;
   padding: 6px 12px;
   border-radius: 50px;
   font-size: 1.1rem;
-  transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition);
 }
 
 #theme-toggle:hover {
   border-color: var(--accent);
-  background-color: rgba(124, 58, 237, 0.1); /* Subtle purple tint on hover */
+  background-color: rgba(124, 58, 237, 0.1);
 }
 
-/* Container & Profile Pic */
+/* GitHub Icon Switching Logic */
+.github-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.github-dark { display: none; } /* Hidden in light mode */
+
+body.dark-mode .github-light { display: none; }
+body.dark-mode .github-dark { display: block; }
+
+/* =========================================
+   5. HOME PAGE ELEMENTS (BIO & PHOTO)
+   ========================================= */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 40px 0;
 }
 
 .image img {
   width: 100%;
   max-width: 320px;
-  border-radius: 20px;
+  border-radius: 24px;
   border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.image img:hover {
+  transform: scale(1.02);
+  border-color: var(--accent);
 }
 
 .text p {
   background: var(--card-bg);
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 20px;
   border: 1px solid var(--border);
-  line-height: 1.7;
+  font-size: 1.1rem;
+  color: var(--text);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-/* Project Cards */
+/* =========================================
+   6. PROJECTS PAGE ELEMENTS
+   ========================================= */
 .projects-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .project-card {
@@ -141,11 +193,20 @@ body {
 .project-card:hover {
   transform: translateY(-5px);
   border-color: var(--accent);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.project-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
-.project-notes { font-style: italic; color: var(--text-muted); margin-bottom: 15px; }
+.project-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.project-notes {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 15px;
+}
 
 .project-link a {
   display: inline-block;
@@ -155,15 +216,38 @@ body {
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
+  font-size: 0.9rem;
+  transition: var(--transition);
 }
 
+.project-link a:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* =========================================
+   7. FOOTER & RESPONSIVENESS
+   ========================================= */
 footer {
   text-align: center;
   padding: 50px;
   border-top: 1px solid var(--border);
   margin-top: 50px;
+  color: var(--text-muted);
 }
 
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Desktop Side-by-Side Layout */
 @media (min-width: 768px) {
-  .container { flex-direction: row; }
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .text {
+    flex: 1;
+  }
 }
