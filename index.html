@@ -3,63 +3,321 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Srujan Shedimane | Home</title>
+  <title>Srujan Shedimane</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 </head>
 <body>
 <script>
-  // Immediate execution to prevent flicker
-  if (localStorage.getItem('portfolio-theme') === 'light') {
-    document.body.classList.add('light-mode');
-  }
+  const t = localStorage.getItem('portfolio-theme');
+  if (t === 'light') document.body.classList.add('light-mode');
+  else document.body.classList.add('dark-mode');
 </script>
 
+<!-- NAV -->
 <nav id="main-nav">
-  <ul class="navbar">
-    <li><button id="theme-toggle">🌙</button></li>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="https://linkedin.com/in/srujan-shedimane-645a45366" target="_blank">
-      <img src="img/linkedin_logo.png" alt="LinkedIn" width="28"  height="26">
-    </a></li>
-    <li><a href="https://github.com/Srujan57" target="_blank">
-      <img src="img/github_logo_black.png" alt="GitHub" class="github-icon github-light">
-      <img src="img/github_logo_white.png" alt="GitHub" class="github-icon github-dark">
-    </a></li>
-  </ul>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SS</a>
+    <ul class="navbar">
+      <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li><a href="projects.html" class="nav-link">Projects</a></li>
+      <li><a href="https://linkedin.com/in/srujan-shedimane-645a45366" target="_blank" class="nav-icon-link" aria-label="LinkedIn">
+        <img src="img/linkedin_logo.png" alt="LinkedIn" width="20" height="19">
+      </a></li>
+      <li><a href="https://github.com/Srujan57" target="_blank" class="nav-icon-link" aria-label="GitHub">
+        <img src="img/github_logo_black.png" alt="GitHub" class="github-icon github-light" width="22" height="22">
+        <img src="img/github_logo_white.png" alt="GitHub" class="github-icon github-dark" width="22" height="22">
+      </a></li>
+      <li><button id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-sun">☀︎</span><span class="theme-moon">☽</span>
+      </button></li>
+    </ul>
+  </div>
 </nav>
 
-<main class="content-wrapper">
-  <h2 style="text-align:center;">About Me</h2>
-
-  <div class="container">
-    <div class="image">
-      <img src="img/Photo.jpg" alt="Profile Pic">
+<!-- HERO -->
+<div class="hero-outer">
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-dot"></span>
+      <span>Computer Science @ The Ohio State University</span>
     </div>
-    <div class="text">
-      <p>
-        Hi!, My name is Srujan Shedimane and I am a Computer and Information Science student at The Ohio State University
-        and a Software Developer at ding!, where I design and implement full-stack features,
-        integrate AI services, and manage database infrastructure
-        platforms. With technical proficiency in Swift, Java, Python, JavaScript, and SQL,
-        I have gained hands-on experience ranging from building iOS applications at the
-        Discovery Partners Institute to facilitating intensive SAT Math bootcamps for high
-        school students. My background as a competitive athlete in swimming and water polo
-        has instilled in me a high degree of discipline and resilience, which I apply to my
-        collaborative work in the Cybersecurity Club and BuckeyeThon. Driven by
-        human-centered design and analytical problem-solving, I am committed to developing
-        scalable, reliable systems that address complex real-world challenges.
-      </p>
+    <h1 class="hero-name">Srujan<br><em>Shedimane</em></h1>
+    <p class="hero-tagline">I build <span class="tag-cycle" id="tagCycle">AI systems</span> that have an impact.</p>
+    <p class="hero-sub">Researcher · Full-stack Engineer · ML Builder<br>Graduating in 2028.</p>
+    <div class="hero-ctas">
+      <a href="projects.html" class="cta-primary">View my work</a>
+      <a href="mailto:srujanshedimane@gmail.com" class="cta-secondary">Get in touch ↗</a>
     </div>
   </div>
-</main>
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-frame">
+      <img src="img/Photo.jpg" alt="Srujan Shedimane" class="hero-photo">
+    </div>
+    <div class="hero-photo-deco"></div>
+  </div>
+</section>
+</div>
 
-<footer>
-  <div class="footer-content">
-    <h3>Get in Touch</h3>
-    <p>Always open to discussing new projects and opportunities.</p>
-    <div class="footer-contact-info">
-      <span>📍 Chicago, IL</span> <span>✉️ <a href="mailto:srujanshedimane@gmail.com">srujanshedimane@gmail.com</a></span> </div>
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title">Building at the intersection of <em>research and product.</em></h2>
+        <p>I'm a CS student at Ohio State focused on AI/ML, full-stack development, and cybersecurity. I care about building things that are both technically rigorous and actually useful.</p>
+        <p>Outside of code, I'm a competitive ex-swimmer and water polo player. I bring the same discipline to shipping software.</p>
+        
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Research projects</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">Hemut (YC X25)</span>
+          <span class="stat-label">Current internship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section section-alt" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Where I've worked &amp; researched.</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">Summer 2026</span>
+          <!-- <span class="timeline-badge badge-accent">Current</span> -->
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-role">AI & Automation Systems Intern</div>
+          <div class="timeline-org">Hemut <span class="timeline-yc">YC X25</span></div>
+          <p class="timeline-desc">Building and shipping full-stack features across a FastAPI/Python backend and Next.js/TypeScript frontend, integrating third-party APIs to power internal business tooling and automation.</p>
+          <div class="timeline-tags">
+            <span class="tag">Next.js</span><span class="tag">AI/ML</span><span class="tag">GTM Engineering</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">January 2026 - Present</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-role">Founding Software Engineer</div>
+          <div class="timeline-org">ding!</div>
+          <p class="timeline-desc">Architecting multiple AI-powered agent workflows integrating OpenAI API, third-party data sources (Perplexity, POS systems), and live menu content to automate restaurant operations end-to-end.</p>
+          <div class="timeline-tags">
+            <span class="tag">AI</span><span class="tag">Supabase</span><span class="tag">Python</span><span class="tag">Next.js</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">May 2026 – Present</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-role">AI Fellow</div>
+          <div class="timeline-org">Handshake</div>
+          <p class="timeline-desc">Evaluating multi-turn model responses using rigorous logical analysis, identifying systemic failure modes and edge cases in LLM behavior across complex algorithmic reasoning and technical domains.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">March 2026 – Present</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-role">Undergraduate Research Assistant</div>
+          <div class="timeline-org">The Ohio State University</div>
+          <p class="timeline-desc">Developing AI-driven health features for a digital health application to improve cardiovascular outcomes for cancer survivors. Combining RAG pipelines, wearable data integration, and behavioral science prompting frameworks.</p>
+          <div class="timeline-tags">
+            <span class="tag">RAG</span><span class="tag">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">March 2026 – Present</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-role">Undergraduate Research Assistant</div>
+          <div class="timeline-org">American Institutions and Methodology Lab</div>
+          <p class="timeline-desc">Building automated data pipelines for political science research, including web scraping, classification of documents using ML techniques, and SCOTUS data analysis.</p>
+          <div class="timeline-tags">
+            <span class="tag">Selenium</span><span class="tag">Machine Learning</span><span class="tag">Data Pipelines</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">July 2025 - August 2025</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-role">Tutor</div>
+          <div class="timeline-org">Schoolhouse.world</div>
+          <p class="timeline-desc">Designed and facilitated an online SAT Math bootcamp for high school students, covering algebra, problem-solving, and test-taking strategies. Led structured lessons and interactive practice sessions, adapting teaching style to diverse learning needs.</p>
+          <div class="timeline-tags">
+            <span class="tag">Leadership</span><span class="tag">Mentoring</span><span class="tag">Adaptive Communication</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-date">June 2024</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-role">iOS Development Intern</div>
+          <div class="timeline-org">Discovery Partners Institute</div>
+          <p class="timeline-desc">Designed and built iOS applications using Swift, contributing to production apps with full feature ownership from concept to deployment.</p>
+          <div class="timeline-tags">
+            <span class="tag">Swift</span><span class="tag">iOS</span><span class="tag">Xcode</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-inner">
+    <div class="section-label">Featured work</div>
+    <h2 class="section-title">Selected projects.</h2>
+    <div class="featured-grid">
+
+      <a href="projects.html" class="featured-card">
+        <div class="featured-card-inner">
+          <div class="featured-num">01</div>
+          <div class="featured-content">
+            <h3 class="featured-title">TransferIQ</h3>
+            <p class="featured-desc">Soccer player market value prediction for Europe's Big 5 leagues. Three-branch ensemble model with genuine temporal train/test split. Presented at the BDAA Research Gala, and tied for 1st place.</p>
+            <div class="featured-meta">
+              <span class="metric">R² 0.86</span>
+              <span class="metric">Big 5 leagues</span>
+              <span class="metric">🥇 BDAA Gala</span>
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Streamlit</span><span class="tag">ML</span>
+            </div>
+          </div>
+        </div>
+        <div class="featured-arrow">→</div>
+      </a>
+
+      <a href="projects.html" class="featured-card">
+        <div class="featured-card-inner">
+          <div class="featured-num">02</div>
+          <div class="featured-content">
+            <h3 class="featured-title">IRIS</h3>
+            <p class="featured-desc">Two-stage deep learning pipeline for early eating disorder detection via retinal OCT biomarkers. U-Net segmentation of retinal layers followed by a thickness-feature classifier.</p>
+            <div class="timeline-tags">
+              <span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">Medical Imaging</span><span class="tag">Deep Learning</span>
+            </div>
+          </div>
+        </div>
+        <div class="featured-arrow">→</div>
+      </a>
+
+    </div>
+    <div class="view-all-wrap">
+      <a href="projects.html" class="cta-secondary">See all projects →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section section-alt" id="skills">
+  <div class="section-inner">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">What I work with.</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">Swift</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Frameworks &amp; Libraries</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Next.js</span>
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">LangChain</span>
+          <span class="skill-pill">JavaFX</span>
+          <span class="skill-pill">Scikit-learn</span>
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">Pandas</span>
+          <span class="skill-pill">NumPy</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools &amp; Platforms</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Supabase</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">ChromaDB</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Vercel</span>
+          <span class="skill-pill">XCode</span>
+          <span class="skill-pill">Linux</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Areas</div>
+        <div class="skill-pills">
+          <span class="skill-pill">AI / ML</span>
+          <span class="skill-pill">RAG Systems</span>
+          <span class="skill-pill">Full-stack Dev</span>
+          <span class="skill-pill">Cybersecurity</span>
+          <span class="skill-pill">Data Pipelines</span>
+          <span class="skill-pill">iOS Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-name">Srujan Shedimane</div>
+      <p class="footer-tagline">Open to research collaborations and internship opportunities.</p>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:srujanshedimane@gmail.com" class="cta-primary">Say hello ↗</a>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/srujan-shedimane-645a45366" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Srujan57" target="_blank">GitHub</a>
+        <span class="footer-location">📍 Chicago, IL</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Srujan Shedimane</span>
   </div>
 </footer>
 

@@ -3,142 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Srujan Shedimane | Projects & Experience</title>
+  <title>Srujan Shedimane | Projects</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 </head>
 <body>
 <script>
-  // Immediate execution to prevent flicker
-  if (localStorage.getItem('portfolio-theme') === 'light') {
-    document.body.classList.add('light-mode');
-  }
+  const t = localStorage.getItem('portfolio-theme');
+  if (t === 'light') document.body.classList.add('light-mode');
+  else document.body.classList.add('dark-mode');
 </script>
 
+<!-- NAV -->
 <nav id="main-nav">
-  <ul class="navbar">
-    <li><button id="theme-toggle">🌙</button></li>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li>
-      <a href="https://linkedin.com/in/srujan-shedimane-645a45366" target="_blank">
-        <img src="img/linkedin_logo.png" alt="LinkedIn" width="28"  height="26">
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/Srujan57" target="_blank">
-        <img src="img/github_logo_black.png" alt="GitHub" class="github-icon github-light">
-        <img src="img/github_logo_white.png" alt="GitHub" class="github-icon github-dark">
-      </a>
-    </li>
-  </ul>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SS</a>
+    <ul class="navbar">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="projects.html" class="nav-link active">Projects</a></li>
+      <li><a href="https://linkedin.com/in/srujan-shedimane-645a45366" target="_blank" class="nav-icon-link" aria-label="LinkedIn">
+        <img src="img/linkedin_logo.png" alt="LinkedIn" width="20" height="19">
+      </a></li>
+      <li><a href="https://github.com/Srujan57" target="_blank" class="nav-icon-link" aria-label="GitHub">
+        <img src="img/github_logo_black.png" alt="GitHub" class="github-icon github-light" width="22" height="22">
+        <img src="img/github_logo_white.png" alt="GitHub" class="github-icon github-dark" width="22" height="22">
+      </a></li>
+      <li><button id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-sun">☀︎</span><span class="theme-moon">☽</span>
+      </button></li>
+    </ul>
+  </div>
 </nav>
 
-<main class="content-wrapper">
-  <h1>Projects</h1>
-  <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">
-    A selection of my personal projects.
-  </p>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="section-label">Work</div>
+    <h1 class="page-hero-title">Projects &amp; <em>Research</em></h1>
+    <p class="page-hero-sub">A highlight of what I've built.</p>
+  </div>
+</section>
 
-  <div class="projects-container">
+<main class="projects-page-content">
 
-    <div class="project-card">
-      <div>
-        <div class="project-title">Byte the Bait: How Technology Stops Phishing</div>
-        <div class="project-desc">
-          Developed multiple deliverables with a multidisciplinary team to explore
-          technical and legislative solutions for phishing attacks. Built a Public
-          Deliverable, Legislative Deliverable, and Industry Deliverable.
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ml">ML / AI</button>
+    <button class="filter-btn" data-filter="research">Research</button>
+    <button class="filter-btn" data-filter="other">Other</button>
+  </div>
+
+  <div class="projects-section-label">Featured</div>
+  <div class="projects-grid" id="projectsGrid">
+
+    <div class="proj-card proj-card--featured" data-cat="ml research">
+      <div class="proj-card-header">
+        <div class="proj-num">01</div>
+        <div class="proj-badges">
+          <span class="badge-award">🥇 BDAA Gala — 1st</span>
         </div>
-        <div class="project-tags">
-          <span class="tag">Research</span>
-          <span class="tag">Teamwork</span>
-          <span class="tag">Cybersecurity</span>
-        </div>
+      </div>
+      <h3 class="proj-title">TransferIQ</h3>
+      <p class="proj-desc">Soccer player market value prediction across Europe's Big 5 leagues. Three-branch ensemble (HistGradientBoostingRegressor) with genuine temporal train/test splits, history-based features, and a Streamlit dashboard. Deployed on Streamlit Community Cloud.</p>
+      <div class="proj-metrics">
+        <span class="metric">R² 0.87</span>
+        <span class="metric">30+ CSV sources</span>
+        <span class="metric">5 leagues</span>
+      </div>
+      <div class="proj-tags">
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">ML</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/Srujan57/TransferIQ" target="_blank" class="proj-link-btn">GitHub ↗</a>
       </div>
     </div>
 
-
-    <div class="project-card">
-      <div>
-        <div class="project-title">Tile Wars</div>
-        <div class="project-desc">
-          A strategy-based Java game where players compete for board dominance using directional tiles
-          and special abilities. Built with object-oriented principles.
-        </div>
-        <div class="project-tags">
-          <span class="tag">Java</span>
-          <span class="tag">OOP</span>
-          <span class="tag">Game Dev</span>
+    <div class="proj-card proj-card--featured" data-cat="ml research">
+      <div class="proj-card-header">
+        <div class="proj-num">02</div>
+        <div class="proj-badges">
+          <span class="badge-feat">Medical Imaging</span>
         </div>
       </div>
-      <div class="project-link"><a href="https://github.com/Srujan57/Tile-Wars" target="_blank">View on GitHub</a></div>
-    </div>
-
-    <div class="project-card">
-      <div>
-        <div class="project-title">Subway Cars</div>
-        <div class="project-desc">
-          JavaScript-based arcade game where users navigate obstacles, collect coins,
-          and utilize power-ups. Features real-time score tracking and collision logic.
-        </div>
-        <div class="project-tags">
-          <span class="tag">JavaScript</span>
-          <span class="tag">HTML5 Canvas</span>
-          <span class="tag">CSS</span>
-        </div>
+      <h3 class="proj-title">IRIS - Intelligent Retinal Imaging Screener</h3>
+      <p class="proj-desc">Two-stage deep learning pipeline for early eating disorder detection via retinal OCT biomarkers. U-Net segments retinal layers (RNFL, GCL, macular, choroidal) and extracts thickness measurements fed into a classifier reporting per-class AUC and macro F1.</p>
+      <div class="proj-tags">
+        <span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">Medical Imaging</span><span class="tag">Deep Learning</span>
       </div>
-      <div class="project-link"><a href="https://github.com/Srujan57/Subway-Cars" target="_blank">View on GitHub</a></div>
-    </div>
-
-
-    <div class="project-card">
-      <div>
-        <div class="project-title">X Marks the Spot</div>
-        <div class="project-desc">A word-search puzzle game implemented in Java featuring custom grid generation and search algorithms.</div>
-        <div class="project-tags">
-          <span class="tag">Java</span>
-          <span class="tag">Algorithms</span>
-        </div>
+      <div class="proj-links">
+        <a href="https://github.com/Srujan57/IRIS-Intelligent-Retinal-Imaging-Screener" target="_blank" class="proj-link-btn">GitHub ↗</a>
       </div>
-      <div class="project-link"><a href="https://github.com/Srujan57/X-marks-the-spot" target="_blank">View on GitHub</a></div>
-    </div>
-
-    <div class="project-card">
-      <div>
-        <div class="project-title">Get Out</div>
-        <div class="project-desc">
-          A Python-based escape room game where users discover clues to escape.
-        </div>
-        <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Game Dev</span>
-        </div>
-      </div>
-      <div class="project-link"><a href="https://github.com/Srujan57/Get-Out" target="_blank">View on GitHub</a></div>
-    </div>
-
-    <div class="project-card">
-      <div>
-        <div class="project-title">Sports Simulation</div>
-        <div class="project-desc">A Python-based simulation engine where player statistics evolve through training cycles and random event logic.</div>
-        <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Data Logic</span>
-        </div>
-      </div>
-      <div class="project-link"><a href="https://github.com/Srujan57/Sports-Simulation" target="_blank">View on GitHub</a></div>
     </div>
 
   </div>
+
+  <div class="projects-section-label" style="margin-top: 4rem;">Other projects</div>
+  <div class="projects-grid projects-grid--small">
+
+    <div class="proj-card" data-cat="research">
+      <h3 class="proj-title-sm">Byte the Bait</h3>
+      <p class="proj-desc-sm">Multi-deliverable research exploring technical and legislative solutions for phishing attacks. Produced public, legislative, and industry reports with a multidisciplinary team.</p>
+      <div class="proj-tags">
+        <span class="tag">Cybersecurity</span><span class="tag">Research</span><span class="tag">Teamwork</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="other">
+      <h3 class="proj-title-sm">Tile Wars</h3>
+      <p class="proj-desc-sm">Strategy Java game where players compete for board dominance using directional tiles and special abilities. Built with object-oriented principles.</p>
+      <div class="proj-tags">
+        <span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Game Dev</span>
+      </div>
+      <a href="https://github.com/Srujan57/Tile-Wars" target="_blank" class="proj-link-sm">View on GitHub ↗</a>
+    </div>
+
+    <div class="proj-card" data-cat="other">
+      <h3 class="proj-title-sm">Subway Cars</h3>
+      <p class="proj-desc-sm">JavaScript arcade game with HTML5 Canvas: obstacle navigation, coin collection, power-ups, and real-time collision logic.</p>
+      <div class="proj-tags">
+        <span class="tag">JavaScript</span><span class="tag">HTML5 Canvas</span><span class="tag">CSS</span>
+      </div>
+      <a href="https://github.com/Srujan57/Subway-Cars" target="_blank" class="proj-link-sm">View on GitHub ↗</a>
+    </div>
+
+    <div class="proj-card" data-cat="other">
+      <h3 class="proj-title-sm">X Marks the Spot</h3>
+      <p class="proj-desc-sm">Word-search puzzle game in Java with custom grid generation and search algorithms.</p>
+      <div class="proj-tags">
+        <span class="tag">Java</span><span class="tag">Algorithms</span>
+      </div>
+      <a href="https://github.com/Srujan57/X-marks-the-spot" target="_blank" class="proj-link-sm">View on GitHub ↗</a>
+    </div>
+
+    <div class="proj-card" data-cat="other">
+      <h3 class="proj-title-sm">Get Out</h3>
+      <p class="proj-desc-sm">Python-based escape room game where users discover clues to escape a procedurally-described environment.</p>
+      <div class="proj-tags">
+        <span class="tag">Python</span><span class="tag">Game Dev</span>
+      </div>
+      <a href="https://github.com/Srujan57/Get-Out" target="_blank" class="proj-link-sm">View on GitHub ↗</a>
+    </div>
+
+    <div class="proj-card" data-cat="ml">
+      <h3 class="proj-title-sm">Sports Simulation</h3>
+      <p class="proj-desc-sm">Python simulation engine where player statistics evolve through training cycles and stochastic event logic.</p>
+      <div class="proj-tags">
+        <span class="tag">Python</span><span class="tag">Data Logic</span>
+      </div>
+      <a href="https://github.com/Srujan57/Sports-Simulation" target="_blank" class="proj-link-sm">View on GitHub ↗</a>
+    </div>
+
+  </div>
+
 </main>
 
-<footer>
-  <div class="footer-content">
-    <h3>Get in Touch</h3>
-    <div class="footer-contact-info">
-      <span>📍 Chicago, IL</span>
-      <span>✉️ <a href="mailto:srujanshedimane@gmail.com">srujanshedimane@gmail.com</a></span>
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-name">Srujan Shedimane</div>
+      <p class="footer-tagline">Open to research collaborations, PhD opportunities, and engineering roles.</p>
     </div>
+    <div class="footer-right">
+      <a href="mailto:srujanshedimane@gmail.com" class="cta-primary">Say hello ↗</a>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/srujan-shedimane-645a45366" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Srujan57" target="_blank">GitHub</a>
+        <span class="footer-location">📍 Chicago, IL</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Srujan Shedimane</span>
   </div>
 </footer>
 
